@@ -31,6 +31,8 @@ module.exports = async(client, interaction) => {
             
             }
 
+            interaction.guild.members.cache.filter(m => !m.user.bot).size
+
         }
     }
 

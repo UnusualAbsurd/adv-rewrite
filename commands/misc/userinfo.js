@@ -13,6 +13,7 @@ module.exports = new Command({
     },
   ],
   execute: async ({ interaction, client }) => {
+
     const user = interaction.options.getMember("user") || interaction.member;
 
     const embed = new MessageEmbed()
@@ -45,6 +46,8 @@ module.exports = new Command({
         )}:R> ]`,
         true
       )
+
+  
       .setFooter(user.id);
 
     const row = new MessageActionRow().addComponents([

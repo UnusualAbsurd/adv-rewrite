@@ -14,7 +14,7 @@ module.exports = async client => {
             const event = require(`../events/${dirs}/${file}`);
             const event_name = file.split(".")[0];
 
-            console.log(`${chalk.yellowBright('[Bot Event]')} ${chalk.blueBright(event_name)}]`)
+            console.log(`${chalk.yellowBright('[Bot Event]')} ${chalk.blueBright(event_name+'.'+file.split('.')[1])}`)
 
             client.on(event_name, event.bind(null, client))
         }
