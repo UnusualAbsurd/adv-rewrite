@@ -1,7 +1,7 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const { Command } = require("../../classes/command");
 const db = require("../../data/models/WarnUsers");
-const { errorMsg, successMsg } = require("../../functions/guild");
+const { errorMsg, successMsg, modLog } = require("../../functions/guild");
 
 module.exports = new Command({
   name: "warn",
@@ -66,7 +66,7 @@ module.exports = new Command({
           reason,
           timestamp: Math.floor(Date.now() / 1000),
           authorID: interaction.user.id,
-        }).save(function () {
+        }).save(async function () {
           interaction.reply({
             embeds: [
               new MessageEmbed()
@@ -92,6 +92,17 @@ module.exports = new Command({
                 .setTimestamp(),
             ],
           });
+          const reply = await interaction.fetchReply()
+          await modLog(interaction, interaction.guildId, new MessageEmbed()
+          .setColor("LIGHT_GREY")
+          .setAuthor(`${interaction.user.id} (${interaction.user.id})`, interaction.user.displayAvatarURL({dynamic: true}))
+          .setDescription([
+              `Member: \`${user.tag}\` (${user.id})`,
+              `Action: **Warn**`,
+              `Reason: ${reason}`
+          ].join("\n"))
+          .setTimestamp(), new MessageActionRow().addComponents(new MessageButton().setLabel("Jump to message").setStyle("LINK").setEmoji("🔗").setURL(`${reply.url}`))
+          )
         });
       }
     }
