@@ -12,6 +12,8 @@ module.exports = {
     },
     successMsg: (interaction, message) => {
       return interaction.reply({ embeds: [new Discord.MessageEmbed().setColor("GREEN").setDescription(`<:greentick:905011429529235467> ${message}`)], ephemeral: false})
-
+    },
+    modLog: async(guildId, embed) => {
+      
     }
 }
