@@ -25,6 +25,7 @@ npm i
 > Change `example.env` to `.env` and then enter the values below
 ```env
 token= DISCORD_BOT_TOKEN
+mongodb= MONGO_DB_SRV
 ```
 
 > Change `config.example.json` to `config.json` and then enter the values below
