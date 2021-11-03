@@ -112,7 +112,7 @@ module.exports = new Command({
             new MessageEmbed()
               .setColor("YELLOW")
               .setAuthor(
-                `${interaction.user.id} (${interaction.user.id})`,
+                `${interaction.user.tag} (${interaction.user.id})`,
                 interaction.user.displayAvatarURL({ dynamic: true })
               )
               .setDescription(
@@ -164,7 +164,7 @@ module.exports = new Command({
             new MessageEmbed()
               .setColor("LUMINOUS_VIVID_PINK")
               .setAuthor(
-                `${interaction.user.id} (${interaction.user.id})`,
+                `${interaction.user.tag} (${interaction.user.id})`,
                 interaction.user.displayAvatarURL({ dynamic: true })
               )
               .setDescription(
@@ -215,7 +215,7 @@ module.exports = new Command({
           new MessageEmbed()
             .setColor("DARK_BLUE")
             .setAuthor(
-              `${interaction.user.id} (${interaction.user.id})`,
+              `${interaction.user.tag} (${interaction.user.id})`,
               interaction.user.displayAvatarURL({ dynamic: true })
             )
             .setDescription(

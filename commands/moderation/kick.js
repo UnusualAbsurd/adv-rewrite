@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { Command } = require("../../classes/command");
-const { errorMsg, successMsg } = require("../../functions/guild");
+const { errorMsg, successMsg, modLog } = require("../../functions/guild");
 
 module.exports = new Command({
     name: 'kick',
@@ -16,6 +16,13 @@ module.exports = new Command({
         user.send({ embeds: [new MessageEmbed().setColor("RED").setAuthor(`You have been kicked from ${interaction.guild.name}`, interaction.guild.iconURL({dynamic: true})).setTimestamp()] }).catch((e) => {});
         successMsg(interaction, `Successfully kicked **${user.user.tag}**`).catch((e) => console.error(e))
         
+        modLog(interaction, interaction.guildId, new MessageEmbed()
+        .setColor("ORANGE")
+        .setTimestamp()
+        .setAuthor(`${}`)
+        )
+
         setTimeout(() => user.kick({ reason }).catch(() => {}), 500)
+
     }
 })
