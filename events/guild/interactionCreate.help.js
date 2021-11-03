@@ -35,11 +35,11 @@ module.exports = async (client, interaction) => {
       client.user.displayAvatarURL()
     );
 
-  const game_embed = new MessageEmbed()
+  const fun_embed = new MessageEmbed()
     .setColor("ORANGE")
     .setTimestamp()
     .setAuthor(
-      `${client.user.username} Game Commands`,
+      `${client.user.username} Fun Commands`,
       client.user.displayAvatarURL()
     );
 
@@ -54,7 +54,7 @@ module.exports = async (client, interaction) => {
   const config_array = [];
   const mod_array = [];
   const misc_array = [];
-  const game_array = [];
+  const fun_array = [];
   const general_array = [];
 
   client.slashCommands.forEach((command) => {
@@ -68,8 +68,8 @@ module.exports = async (client, interaction) => {
       case "misc":
         misc_array.push(command);
         break;
-      case "game":
-        game_array.push(command);
+      case "fun":
+        fun_array.push(command);
         break;
       case "general":
         general_array.push(command);
@@ -86,8 +86,8 @@ module.exports = async (client, interaction) => {
   misc_array.forEach((cmd) =>
     misc_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
   );
-  game_array.forEach((cmd) =>
-    game_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  fun_array.forEach((cmd) =>
+    fun_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
   );
   general_array.forEach((cmd) =>
     general_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
@@ -108,8 +108,8 @@ module.exports = async (client, interaction) => {
       case "misc":
         menu.reply({ ephemeral: true, embeds: [misc_embed] });
         break;
-      case "game":
-        menu.reply({ ephemeral: true, embeds: [game_embed] });
+      case "fun":
+        menu.reply({ ephemeral: true, embeds: [fun_embed] });
         break;
       case "general":
         menu.reply({ ephemeral: true, embeds: [general_embed] });

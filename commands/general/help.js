@@ -28,10 +28,10 @@ module.exports = new Command({
                emoji: "<:pastelverified:905310494297042944>",
            },
            {
-               label: "Game Commands",
+               label: "Fun Commands",
                description: "List of the bots game commands",
-               value: 'game',
-               emoji: "<:pastelshield:905310484968906772>"
+               value: 'fun',
+               emoji: "<:pepesmile:905395117681156106>"
            },
            {
             label: "General Commands",

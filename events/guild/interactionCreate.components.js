@@ -18,7 +18,7 @@ module.exports = async(client, interaction) => {
                 let roles = user.roles.cache
                 .sort((a, b) => a.position - b.position)
                 .map((role) => role.toString())
-                .slice(0, 1) || 
+                .slice(0, -1) || 
                 "No Custom Server Roles";
 
                 const roleEmbed = new Discord.MessageEmbed()
