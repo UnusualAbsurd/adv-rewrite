@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 require('dotenv').config();
 
 const client = new Discord.Client({
-    intents: 513,
+    intents: 14023,
     partials: ['CHANNEL', 'GUILD_MEMBER', 'USER']
 });
 

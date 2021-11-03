@@ -77,12 +77,21 @@ module.exports = async (client, interaction) => {
     }
   });
 
-  config_array.forEach(cmd => config_embed.addField(`/${cmd.name}`, `> ${cmd.description}`))
-  mod_array.forEach(cmd => mod_embed.addField(`/${cmd.name}`, `> ${cmd.description}`))
-  misc_array.forEach(cmd => misc_embed.addField(`/${cmd.name}`, `> ${cmd.description}`))
-  game_array.forEach(cmd => game_embed.addField(`/${cmd.name}`, `> ${cmd.description}`))
-  general_array.forEach(cmd => general_embed.addField(`/${cmd.name}`, `> ${cmd.description}`))
-
+  config_array.forEach((cmd) =>
+    config_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  );
+  mod_array.forEach((cmd) =>
+    mod_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  );
+  misc_array.forEach((cmd) =>
+    misc_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  );
+  game_array.forEach((cmd) =>
+    game_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  );
+  general_array.forEach((cmd) =>
+    general_embed.addField(`/${cmd.name}`, `> ${cmd.description}`)
+  );
 
   /**
    *
@@ -90,21 +99,21 @@ module.exports = async (client, interaction) => {
    */
   function select(menu) {
     switch (menu.values[0]) {
-        case 'config':
-            menu.reply({ ephemeral: true, embeds: [config_embed] });
+      case "config":
+        menu.reply({ ephemeral: true, embeds: [config_embed] });
         break;
-        case 'moderation':
-            menu.reply({ ephemeral: true, embeds: [mod_embed] });
+      case "moderation":
+        menu.reply({ ephemeral: true, embeds: [mod_embed] });
         break;
-        case 'misc':
-            menu.reply({ ephemeral: true, embeds: [misc_embed] });
-        break
-        case 'game':
-            menu.reply({ ephemeral: true, embeds: [game_embed] });
+      case "misc":
+        menu.reply({ ephemeral: true, embeds: [misc_embed] });
         break;
-        case 'general':
-            menu.reply({ ephemeral: true, embeds: [general_embed] });
-        break
+      case "game":
+        menu.reply({ ephemeral: true, embeds: [game_embed] });
+        break;
+      case "general":
+        menu.reply({ ephemeral: true, embeds: [general_embed] });
+        break;
     }
   }
 
