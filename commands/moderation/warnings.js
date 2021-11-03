@@ -4,6 +4,7 @@ const db = require('../../data/models/WarnUsers');
 
 module.exports = new Command({
     name: "warnings",
+    category: 'moderation',
     description: "Get the list of warnings from a user",
     options: [{ name: 'user', description: "The user that you want to check the warnings", type: "USER", required: true }],
     execute: async({ interaction }) => {

@@ -3,6 +3,7 @@ const { Command } = require('../../classes/command')
 
 module.exports = new Command({
     name: "serverinfo",
+    category: 'misc',
     description: "Get information of a server",
     execute: async({ interaction, client }) => {
         const guild = interaction.guild;

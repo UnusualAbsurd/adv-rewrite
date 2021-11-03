@@ -12,7 +12,6 @@ m.connect(`${process.env.mongodb}`)
 .then(() => console.log(`${chalk.magentaBright('[MongoDB Connection]')} Connected`))
 .catch((e) => console.error(`${chalk.redBright(`[MongoDB Connection]`)} ${e.stack}`))
 
-client.commands = new Discord.Collection();
 client.slashCommands = new Discord.Collection();
 client.config = require('./config.json');
 

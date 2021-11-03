@@ -9,6 +9,7 @@ export interface ExecuteOptions {
 export declare type ExecuteFunction = (options: RunOptiExecuteOptionsons) => any;
 export declare type CommandOptions = {
     userPermissions?: PermissionResolvable[];
+    category?: 'config' | 'general' | 'game' | 'moderation' | 'misc';
     execute: ExecuteFunction;
 } & ChatInputApplicationCommandData;
 export declare class Command {

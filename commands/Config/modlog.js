@@ -4,6 +4,7 @@ const { successMsg, errorMsg } = require("../../functions/guild");
 
 module.exports = new Command({
     name: "modlog",
+    category: 'config',
     description: "Set the mod log channel for the server",
     userPermissions: ["MANAGE_GUILD"],
     options: [{ name: 'channel', description: "The channel that you want to set the mod log as", type: "CHANNEL", channelTypes: ['GUILD_TEXT'], required: true }],

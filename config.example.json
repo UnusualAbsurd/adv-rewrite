@@ -1,3 +1,7 @@
 {
-    "testGuild": "TEST_SERVER_ID"
+    "testGuild": "TEST_SERVER_ID",
+    "invite": {
+        "default": "https://discord.com/api/oauth2/authorize?client_id=DISCORD_BOT_ID&permissions=535750376663&scope=bot%20applications.commands",
+        "admin": "https://discord.com/api/oauth2/authorize?client_id=DISCORD_BOT_ID&permissions=8&scope=bot%20applications.commands"
+    }
 }

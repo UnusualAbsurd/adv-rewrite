@@ -29,9 +29,14 @@ mongodb= MONGO_DB_SRV
 ```
 
 > Change `config.example.json` to `config.json` and then enter the values below
+> Changes: `TEST_SERVER_ID` : Discord Test Server || `DISCORD_BOT_ID`: ID of your application
 ```json
 {
-  "testGuild": "TEST_SERVER_ID"
+    "testGuild": "TEST_SERVER_ID",
+    "invite": {
+        "default": "https://discord.com/api/oauth2/authorize?client_id=DISCORD_BOT_ID&permissions=535750376663&scope=bot%20applications.commands",
+        "admin": "https://discord.com/api/oauth2/authorize?client_id=DISCORD_BOT_ID&permissions=8&scope=bot%20applications.commands"
+    }
 }
 ```
 

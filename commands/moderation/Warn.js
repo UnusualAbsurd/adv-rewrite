@@ -5,6 +5,7 @@ const { errorMsg, successMsg, modLog } = require("../../functions/guild");
 
 module.exports = new Command({
   name: "warn",
+  category: 'moderation',
   description: `Warn System`,
   userPermissions: ["MANAGE_MESSAGES"],
   options: [

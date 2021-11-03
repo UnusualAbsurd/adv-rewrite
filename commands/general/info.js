@@ -5,6 +5,7 @@ const os = require('os')
 
 module.exports = new Command({
     name: 'info',
+    category: "general",
     description: "Information of the bot",
     execute: async({ interaction, client }) => {
         

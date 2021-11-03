@@ -3,6 +3,7 @@ const { Command } = require("../../classes/command");
 
 module.exports = new Command({
   name: "userinfo",
+  category: 'misc',
   description: "Get information of a user!",
   options: [
     {

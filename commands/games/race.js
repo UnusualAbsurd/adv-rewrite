@@ -4,6 +4,7 @@ const arrayMove = require('array-move-item');
 
 module.exports = new Command({
     name: "race",
+    category: "game",
     description: "Start a race!",
     execute: async({interaction}) => {
         const modes = ['car', 'horse', 'bike']
