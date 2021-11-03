@@ -40,6 +40,19 @@ module.exports = new Command({
         },
       ],
     },
+    {
+      name: "clear",
+      description: "Clear a warning from a user",
+      type: "SUB_COMMAND",
+      options: [
+        {
+          name: "user",
+          description: "The user that you want to clear the warning from",
+          type: "USER",
+          required: true,
+        },
+      ],
+    },
   ],
   execute: async ({ interaction, args, client }) => {
     const user = interaction.options.getUser("user");
@@ -92,17 +105,32 @@ module.exports = new Command({
                 .setTimestamp(),
             ],
           });
-          const reply = await interaction.fetchReply()
-          await modLog(interaction, interaction.guildId, new MessageEmbed()
-          .setColor("LIGHT_GREY")
-          .setAuthor(`${interaction.user.id} (${interaction.user.id})`, interaction.user.displayAvatarURL({dynamic: true}))
-          .setDescription([
-              `Member: \`${user.tag}\` (${user.id})`,
-              `Action: **Warn**`,
-              `Reason: ${reason}`
-          ].join("\n"))
-          .setTimestamp(), new MessageActionRow().addComponents(new MessageButton().setLabel("Jump to message").setStyle("LINK").setEmoji("🔗").setURL(`${reply.url}`))
-          )
+          const reply = await interaction.fetchReply();
+          await modLog(
+            interaction,
+            interaction.guildId,
+            new MessageEmbed()
+              .setColor("YELLOW")
+              .setAuthor(
+                `${interaction.user.id} (${interaction.user.id})`,
+                interaction.user.displayAvatarURL({ dynamic: true })
+              )
+              .setDescription(
+                [
+                  `Member: \`${user.tag}\` (${user.id})`,
+                  `Action: **Warn**`,
+                  `Reason: ${reason}`,
+                ].join("\n")
+              )
+              .setTimestamp(),
+            new MessageActionRow().addComponents(
+              new MessageButton()
+                .setLabel("Jump to message")
+                .setStyle("LINK")
+                .setEmoji("🔗")
+                .setURL(`${reply.url}`)
+            )
+          );
         });
       }
     }
@@ -127,7 +155,85 @@ module.exports = new Command({
             interaction,
             `Successfully deleted **${uu.tag}** warning.`
           );
+
+          const reply = await interaction.fetchReply();
+
+          await modLog(
+            interaction,
+            interaction.guildId,
+            new MessageEmbed()
+              .setColor("LUMINOUS_VIVID_PINK")
+              .setAuthor(
+                `${interaction.user.id} (${interaction.user.id})`,
+                interaction.user.displayAvatarURL({ dynamic: true })
+              )
+              .setDescription(
+                [
+                  `Member: \`${uu.tag}\` (${uu.id})`,
+                  `Action: **Warn Delete**`,
+                  `Warn-ID: \`${id}\``,
+                  `Reason: ${reason}`,
+                ].join("\n")
+              )
+              .setTimestamp(),
+            new MessageActionRow().addComponents(
+              new MessageButton()
+                .setLabel("Jump to message")
+                .setStyle("LINK")
+                .setEmoji("🔗")
+                .setURL(`${reply.url}`)
+            )
+          );
         });
+      }
+    }
+
+    if (subcommand === "clear") {
+      const data = await db
+        .find({ guildID: interaction.guildId, userID: user.id })
+        .catch(() => {});
+
+      if (!data?.length)
+        return errorMsg(
+          interaction,
+          `<@!${user.id}> does not have any warnings.`
+        );
+      if (data) {
+        data.forEach((warning) => {
+          warning.delete();
+        });
+        successMsg(
+          interaction,
+          `Successfully cleared **${user.tag}** warnings.`
+        );
+
+        const reply = await interaction.fetchReply();
+
+        await modLog(
+          interaction,
+          interaction.guildId,
+          new MessageEmbed()
+            .setColor("DARK_BLUE")
+            .setAuthor(
+              `${interaction.user.id} (${interaction.user.id})`,
+              interaction.user.displayAvatarURL({ dynamic: true })
+            )
+            .setDescription(
+              [
+                `Member: \`${user.tag}\` (${user.id})`,
+                `Action: **Warn Clear**`,
+                `Reason: ${reason}`,
+              ].join("\n")
+            )
+            .setTimestamp(),
+          new MessageActionRow().addComponents(
+            new MessageButton()
+              .setLabel("Jump to message")
+              .setStyle("LINK")
+              .setEmoji("🔗")
+              .setURL(`${reply.url}`)
+          )
+        );
       }
     }
   },
