@@ -16,7 +16,7 @@ module.exports = async(client, interaction) => {
             if(user) {
 
                 let roles = user.roles.cache
-                .sort((a, b) => a.position - b.position)
+                .sort((a, b) => b.position - a.position)
                 .map((role) => role.toString())
                 .slice(0, -1) || 
                 "No Custom Server Roles";
